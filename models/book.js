@@ -26,10 +26,6 @@ const BookSchema = new Schema({
     type: String,
     required: [true, 'Student card is required!'],
   },
-  id_card: {
-    type: String,
-    required: [true, 'Id card is required!'],
-  },
 });
 
 const Book = models.Book || model("Book", BookSchema);

@@ -2,11 +2,15 @@
 
 import { useState } from 'react';
 import useAuth from '@hooks/useAuth';
+import useToast from '@hooks/useToast';
+import { useRouter } from "next/navigation";
 import Link from 'next/link';
 import Image from 'next/image';
 
 const Navbar = () => {
-  const { auth } = useAuth();
+  const { auth, updateAuth } = useAuth();
+  const router = useRouter()
+  const showToast = useToast()
 
   const [menus, setMenus] = useState([
     {
@@ -22,6 +26,16 @@ const Navbar = () => {
       url: '/photos'
     }
   ])
+
+  const handleLogout = () => {
+    updateAuth({
+      id: '',
+      username: '',
+      role: 0
+    });
+    router.push('/');
+    showToast(0, 'Logout successful')
+  }
 
   return (
     <nav className="bg-black p-4 font-poppins flex items-center justify-between text-white text-base">
@@ -66,12 +80,10 @@ const Navbar = () => {
           </div>
         ) : (
           <div className='ml-4 mr-4'>
-            <div className="hover:text-gray-300 cursor-pointer">
-              <Link href="/">
-                <div>Logout</div>
-              </Link>
+            <div className="hover:text-gray-300 cursor-pointer" onClick={handleLogout}>
+              <span>Logout</span>
             </div>
-            </div>
+          </div>
         )
       }
       </div>

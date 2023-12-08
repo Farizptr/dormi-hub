@@ -2,18 +2,16 @@
 
 import { useState } from 'react'
 import { useRouter } from "next/navigation";
-import useAuth from "@hooks/useAuth";
+import useToast from '@hooks/useToast';
 import axios from 'axios'
 import Navbar from '@/components/Navbar';
 import Image from 'next/image';
 import Modal from 'react-modal'
 
-// ... (import dan komponen lainnya)
-
 export default function Registration() {
   const[showModal, setShowModal]=useState(false);
   const router = useRouter()
-  const { auth, updateAuth } = useAuth() 
+  const showToast = useToast()
 
   const [formData, setFormData] = useState({
     full_name: '',
@@ -21,6 +19,7 @@ export default function Registration() {
     email: '',
     student_id: '',
     check_in: '',
+    student_card: ''
   });
 
   const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) => {
@@ -29,24 +28,33 @@ export default function Registration() {
       ...prevData,
       [name]: value,
     }));
+    console.log(formData)
   };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFormData((prevData) => ({
+        ...prevData,
+        student_card: e.target.files[0].name
+      }))
+    }
+  }
 
   const handleRegistration = async () => {
     try {
-      // Lakukan validasi formulir jika diperlukan
-
-      // Kirim data pendaftaran ke server menggunakan axios atau metode lainnya
-      const response = await axios.post('http://localhost:3000/api/register', formData);
+      const response = await axios.post('http://localhost:3000/api/book/', formData);
 
       if (response.status === 200) {
-        // Registrasi berhasil, lakukan tindakan selanjutnya (contoh: navigasi ke halaman selanjutnya)
-        console.log("Registrasi berhasil");
+        showToast(0, 'Registrasi berhasil')
+        router.push('/')
       } else {
-        console.log("Registrasi gagal");
+        showToast(1, 'Registrasi gagal')
       }
-
+      setShowModal(false)
+      
     } catch (error) {
-      console.error(error);
+      showToast(1, 'Registrasi gagal')
+      setShowModal(false)
     }
   };
 
@@ -67,9 +75,11 @@ export default function Registration() {
           <label htmlFor="full_name">Nama Lengkap</label>
           <input
             type="text"
-            id="username"
-            name="username"
+            id="full_name"
+            name="full_name"
             className="w-full px-3 py-2 border border-black rounded-md focus:outline-none focus:border-blue-500"
+            onChange={handleInputChange}
+            value={formData.full_name}
             required
           />
         </div>
@@ -132,11 +142,9 @@ export default function Registration() {
             type="file"
             id="file"
             name="file"
-            onChange={handleInputChange}
+            onChange={handleFileChange}
             accept=".pdf, .png, .jpg, .jpeg"
-            
             className="w-full px-3 py-2 border  border-black rounded-md focus:outline-none focus:border-blue-500 h-[40px]"
-
           />
         </div>
       </form>
@@ -162,12 +170,7 @@ export default function Registration() {
           <div className="flex justify-center items-center">
             <button
               className="px-4 py-2  rounded-md hover:bg-opacity-80"
-              onClick={() => {
-                setShowModal(false);
-                //save redirect to local storage
-                // Store the redirect URL without additional characters
-                router.push('/home');
-              }}
+              onClick={handleRegistration}
             >
               <Image src="/images/ok.svg" alt="ok" width={50} height={20}/>
             </button>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from "next/navigation";
+import useToast from "@hooks/useToast";
 import useAuth from '@hooks/useAuth'
 import axios from 'axios'
 import Image from 'next/image';
@@ -14,6 +15,7 @@ interface LoginDataType {
 export default function Home() {
   const router = useRouter()
   const { auth, updateAuth } = useAuth();
+  const showToast = useToast()
 
   const [loginData, setLoginData] = useState<LoginDataType>({
     username: '',
@@ -50,7 +52,7 @@ export default function Home() {
       }
 
     } catch (error) {
-      console.log(error)
+      showToast(1, "Invalid username or password")
     }
   }
 

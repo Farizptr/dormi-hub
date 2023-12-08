@@ -1,9 +1,13 @@
 'use client'
-import Image from 'next/image';
 
+import useAuth from '@hooks/useAuth';
+import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 
 export default function Home() {
+  const { auth } = useAuth()
+  console.log(auth)
+
    return (
       <div>
          <div className=" h-14">

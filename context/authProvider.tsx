@@ -2,7 +2,7 @@
 
 import { createContext, useState, ReactNode } from 'react';
 
-interface AuthData {
+export interface AuthData {
     id: string;
     username: string;
     role: number;
