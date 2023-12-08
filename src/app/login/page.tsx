@@ -32,7 +32,7 @@ export default function Home() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/login', {
+      const response = await axios.post('https://dormi-gbfdc4gkw-fariz-putras-projects.vercel.app/api/auth/login', {
         username: loginData.username,
         password: loginData.password
       });
