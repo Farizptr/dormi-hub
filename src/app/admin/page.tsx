@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import withRoles from '@/components/withRoles'; 
+// import withRoles from '@/components/withRoles'; 
 import Navbar from '@/components/Navbar';
 import axios from 'axios';
 
@@ -122,4 +122,4 @@ function Admin() {
    );
 }
 
-export default withRoles(Admin, [2])
+export default Admin
