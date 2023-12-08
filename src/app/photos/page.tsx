@@ -17,11 +17,11 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div className='flex mx-auto pl-2 pt-2 items-center'>
+      <div className='flex mx-auto pl-4 pt-2 items-center text-xl'>
         <div className='flex justify-center items-center mr-1'>
           <Image src="/images/address.svg" alt="gambar address" width={20} height={20}/>
         </div>
-        <div className=' w-28 flex justify-between mr-2'>
+        <div className=' w-32 flex justify-between mr-2'>
           <div>
             Address
           </div>
@@ -32,11 +32,11 @@ export default function Home() {
         <div>Hogwarts University Dormitory</div>
       </div>
 
-      <div className='flex pl-2 items-center'>
+      <div className='flex pl-4 items-center text-xl'>
         <div className='flex justify-center items-center mr-1'>
           <Image src="/images/bills.svg" alt="gambar address" width={20} height={20}/>
         </div>
-        <div className='w-28 flex justify-between mr-2'>
+        <div className='w-32 flex justify-between mr-2'>
           <div>
             Bills Included
           </div>
@@ -47,11 +47,11 @@ export default function Home() {
         <div>Wifi, Water Electricity, Gas</div>
       </div>
 
-      <div className='flex pl-2 items-center'>
+      <div className='flex pl-4 items-center text-xl'>
         <div className='flex justify-center items-center mr-1'>
           <Image src="/images/cube.svg" alt="gambar address" width={20} height={20}/>
         </div>
-        <div className='w-28 flex justify-between mr-2'>
+        <div className='w-32 flex justify-between mr-2'>
           <div>
             Our Facilities
           </div>

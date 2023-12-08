@@ -49,12 +49,16 @@ export default function Home() {
 
   return (
     <div>
-        <Navbar/>
+        <div className=" h-14">
+                <div className="fixed w-screen z-[1000]">
+                    <Navbar/>
+                </div>
+        </div>
     <div className='flex justify-center items-center w-full min-h-screen bg-cover bg-center bg-[url("/images/login-background.png")] font-poppins'>
-      <div className='bg-white w-[300px] h-[450px] p-6 shadow-xl border-2 border-slate-300'>
+      <div className='bg-white w-[300px] h-[450px] px-6 pb-6 shadow-xl border-2 border-slate-300'>
       
-        <div className='flex items-center justify-center '>
-          CheckIn
+      <div className='bg-[#FDFF8F]  h-12 mx-10 flex items-center justify-center mb-6'>
+          CHECK IN
         </div>
         <div className='text-center font-bold text-3xl mt-10'>
             SCAN ME

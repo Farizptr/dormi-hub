@@ -56,8 +56,10 @@ export default function Home() {
                 </div>
         </div>
     <div className='flex justify-center items-center w-full min-h-screen bg-cover bg-center bg-[url("/images/dormitory.png")] font-poppins'>
-      <div className='bg-white w-[300px] h-[450px] p-6 shadow-xl border-2 border-slate-300'>
-      
+      <div className='bg-white w-[300px] h-[450px] px-6 pb-6 shadow-xl border-2 border-slate-300'>
+        <div className='bg-[#FDFF8F]  h-12 mx-10 flex items-center justify-center mb-6'>
+          LOGIN
+        </div>
         <div className='flex items-center justify-center '>
           <Image src="/images/geometry.svg" width={100} height={20} alt="logo profile "/>
         </div>
