@@ -1,7 +1,28 @@
+'use client'
+
+import { useState } from 'react';
+import useAuth from '@hooks/useAuth';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const Navbar = () => {
+  const { auth } = useAuth();
+
+  const [menus, setMenus] = useState([
+    {
+      page: 'Home',
+      url: '/'
+    },
+    {
+      page: 'Book now',
+      url: '/book'
+    },
+    {
+      page: 'Photos',
+      url: '/photos'
+    }
+  ])
+
   return (
     <nav className="bg-black p-4 font-poppins flex items-center justify-between text-white text-base">
       <Link href="/">
@@ -10,43 +31,49 @@ const Navbar = () => {
           <Image src="/images/logo-dormihub.svg" width={30} height={20} alt="Logo DormiHub"/>
         </div>
         <div>
-          DormiHub
+          {auth.role !== 2 ? 'DormiHub' : 'DormiHub Admin'}
         </div>
       </div>
       </Link>
       <div className='flex'>
 
-      <div className='ml-4 mr-4'>
-        <div className="hover:text-gray-300 cursor-pointer">
-          <Link href="/">
-            <div>Home</div>
-          </Link>
-        </div>
-      </div>
+      {
+        auth.role !== 2 ? (
+          menus.map((menu, i) => {
+            return (
+              <div className='ml-4 mr-4' key={i}>
+                <div className="hover:text-gray-300 cursor-pointer">
+                  <Link href={menu.url}>
+                    <div>{menu.page}</div>
+                  </Link>
+                </div>
+              </div>
+            )
+          })
+        ) : (
+          null
+        )
+      }
 
-      <div className='ml-4 mr-4'>
-        <div className="hover:text-gray-300 cursor-pointer">
-          <Link href="/book">
-            <div>Book Now</div>
-          </Link>
-        </div>
-      </div>
-
-      <div className='ml-4 mr-4'>
-        <div className="hover:text-gray-300 cursor-pointer">
-          <Link href="/photos">
-            <div>Photos</div>
-          </Link>
-        </div>
-      </div>
-
-      <div className='ml-4 mr-4'>
-        <div className="hover:text-gray-300 cursor-pointer">
-          <Link href="/login">
-            <div>Login</div>
-          </Link>
-        </div>
-      </div>
+      {
+        auth.role === 0 ? (
+          <div className='ml-4 mr-4'>
+            <div className="hover:text-gray-300 cursor-pointer">
+              <Link href="/login">
+                <div>Login</div>
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <div className='ml-4 mr-4'>
+            <div className="hover:text-gray-300 cursor-pointer">
+              <Link href="/">
+                <div>Logout</div>
+              </Link>
+            </div>
+            </div>
+        )
+      }
       </div>
     </nav>
   );

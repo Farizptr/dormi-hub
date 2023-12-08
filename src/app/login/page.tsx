@@ -2,10 +2,9 @@
 
 import { useState } from 'react'
 import { useRouter } from "next/navigation";
+import useAuth from '@hooks/useAuth'
 import axios from 'axios'
 import Image from 'next/image';
-import Navbar from '@/components/Navbar';
-
 
 interface LoginDataType {
   username: string;
@@ -14,6 +13,7 @@ interface LoginDataType {
 
 export default function Home() {
   const router = useRouter()
+  const { auth, updateAuth } = useAuth();
 
   const [loginData, setLoginData] = useState<LoginDataType>({
     username: '',
@@ -36,11 +36,17 @@ export default function Home() {
       });
 
       if (response.status === 200) {
-        // navigate ke home page
-        console.log("Success")
-        router.push("/home");
-      } else {
-        console.log("Failed")
+        updateAuth({
+          id: response.data.data.id,
+          username: response.data.data.username,
+          role: response.data.data.role
+        });
+
+        if (response.data.data.role === 2) {
+          router.push("/admin");
+        } else {
+          router.push("/");
+        }
       }
 
     } catch (error) {
@@ -50,11 +56,6 @@ export default function Home() {
 
   return (
     <div>
-        <div className=" h-14">
-                <div className="fixed w-screen z-[1000]">
-                    <Navbar/>
-                </div>
-        </div>
     <div className='flex justify-center items-center w-full min-h-screen bg-cover bg-center bg-[url("/images/dormitory.png")] font-poppins'>
       <div className='bg-white w-[300px] h-[450px] px-6 pb-6 shadow-xl border-2 border-slate-300'>
         <div className='bg-[#FDFF8F]  h-12 mx-10 flex items-center justify-center mb-6'>

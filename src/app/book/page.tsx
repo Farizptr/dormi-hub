@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from "next/navigation";
+import useAuth from "@hooks/useAuth";
 import axios from 'axios'
 import Navbar from '@/components/Navbar';
 import Image from 'next/image';
@@ -12,6 +13,8 @@ import Modal from 'react-modal'
 export default function Registration() {
   const[showModal, setShowModal]=useState(false);
   const router = useRouter()
+  const { auth, updateAuth } = useAuth() 
+
   const [formData, setFormData] = useState({
     full_name: '',
     phone: '',

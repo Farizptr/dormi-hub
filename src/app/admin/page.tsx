@@ -1,14 +1,14 @@
 'use client'
 import Image from 'next/image';
 
-import NavbarAdmin from '@/components/NavbarAdmin';
+import Navbar from '@/components/Navbar';
 
 export default function Home() {
    return (
       <div>
          <div className=" h-14">
                 <div className="fixed w-screen z-[1000]">
-                    <NavbarAdmin/>
+                    <Navbar/>
                 </div>
         </div>
          <div className='grid grid-cols-2 gap-4 p-5 font-poppins'>

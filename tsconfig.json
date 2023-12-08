@@ -23,7 +23,9 @@
       "@public/*": ["./public/*"],
       "@models/*": ["./models/*"],
       "@utils/*": ["./utils/*"],
-      "@upload/*": ["./upload/*"]
+      "@upload/*": ["./upload/*"],
+      "@hooks/*": ["./hooks/*"],
+      "@context/*": ["./context/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

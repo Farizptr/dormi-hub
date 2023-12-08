@@ -14,7 +14,12 @@ export const POST = async (request) => {
         if (user) {
             if (user.password === password) {
                 return new Response(JSON.stringify({
-                    message: "Login successful"
+                    message: "Login successful",
+                    data: {
+                        "id": user.id,
+                        "username": user.username,
+                        "role": user.role
+                    }
                 }), { status: 200 })
             } 
         }
