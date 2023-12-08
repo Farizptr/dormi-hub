@@ -3,7 +3,11 @@ import Navbar from '@/components/Navbar'
 export default function Home() {
   return (
     <main className='bg-white h-screen text-black font-poppins'>
-      <Navbar/>
+      <div className=" h-14">
+                <div className="fixed w-screen z-[1000]">
+                    <Navbar/>
+                </div>
+        </div>
       <div className="container mx-auto p-2 flex justify-center">
         <div className="grid grid-cols-3 gap-3 md:grid-cols-3 sm:grid-cols-2 ">
           {[1, 2, 3, 4, 5, 6].map((index) => (

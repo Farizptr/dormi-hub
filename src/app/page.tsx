@@ -6,7 +6,11 @@ import Navbar from '@/components/Navbar';
 export default function Home() {
    return (
       <div>
-         <Navbar />
+         <div className=" h-14">
+                <div className="fixed w-screen z-[1000]">
+                    <Navbar/>
+                </div>
+        </div>
          <div className='p-4 font-poppins'>
             <div className='w-full font-extrabold bg-cover bg-center bg-[url("/images/home-text-sample.png")] py-16 text-center text-2xl mb-3'>
                Welcome to the next generation of dormitory living.<br />

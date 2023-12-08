@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from "next/navigation";
 import axios from 'axios'
 import Image from 'next/image';
+import Navbar from '@/components/Navbar';
 
 
 interface LoginDataType {
@@ -48,6 +49,12 @@ export default function Home() {
   }
 
   return (
+    <div>
+        <div className=" h-14">
+                <div className="fixed w-screen z-[1000]">
+                    <Navbar/>
+                </div>
+        </div>
     <div className='flex justify-center items-center w-full min-h-screen bg-cover bg-center bg-[url("/images/dormitory.png")] font-poppins'>
       <div className='bg-white w-[300px] h-[450px] p-6 shadow-xl border-2 border-slate-300'>
       
@@ -67,7 +74,7 @@ export default function Home() {
             onChange={handleLoginData}
             value={loginData.username}
             required
-          />
+            />
         </div>
         <div className="mb-4">
           <label htmlFor="password" className="block text-black text-sm font-medium mb-1">
@@ -81,13 +88,13 @@ export default function Home() {
             onChange={handleLoginData}
             value={loginData.password}
             required
-          />
+            />
         </div>
         <div className="text-center mt-10">
           <button
             className="w-full border-[1.5px] border-black bg-[#FDFF8F] px-4 py-2 rounded-2xl hover:bg-blue-600 focus:outline-none"
             onClick={handleLogin}
-          >
+            >
             LOGIN
           </button>
         </div>
@@ -95,5 +102,6 @@ export default function Home() {
         
       </div>
     </div>
+            </div>
   )
 }
