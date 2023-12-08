@@ -44,7 +44,7 @@ export default function Registration() {
 
   const handleRegistration = async () => {
     try {
-      const response = await axios.post('https://dormi-gbfdc4gkw-fariz-putras-projects.vercel.app/api/book/', formData);
+      const response = await axios.post('/api/book/', formData);
 
       if (response.status === 200) {
         showToast(0, 'Registrasi berhasil')

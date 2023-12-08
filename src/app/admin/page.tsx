@@ -22,7 +22,7 @@ function Admin() {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const response = await axios.get('https://dormi-gbfdc4gkw-fariz-putras-projects.vercel.app/api/book/')
+                const response = await axios.get('/api/book/')
                 if (response.status === 200) {
                     setBooks(response.data)
                 }
@@ -35,7 +35,7 @@ function Admin() {
     const handleDelete =  (id: string) => {
         const deleteBook = async (id: string) => {
             try {
-                const response = await axios.delete(`https://dormi-gbfdc4gkw-fariz-putras-projects.vercel.app/api/book/${id}`)
+                const response = await axios.delete(`/api/book/${id}`)
                 if (response.status === 200) {
                 }
 
