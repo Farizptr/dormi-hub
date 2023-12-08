@@ -1,0 +1,195 @@
+import React, { useEffect, useState } from 'react';
+import { supabase } from '../supabase';
+import { Router } from 'next/router';
+
+const Dashboard = () => {
+    const [session, setSession] = React.useState(false);
+    const [isModalRequest, setIsModalRequest] = useState(false);
+    const [isAvailable, setIsModalAvailable] = useState(false);
+    const [isNotAvailable, setIsModalNotAvailable] = useState(false);
+    const router = Router;
+
+    useEffect(() => {
+        async function checkAuth() {
+            const { data: { session } } = await (supabase as NonNullable<typeof supabase>).auth.getSession();
+            if (session) {
+                setSession(true);
+            }
+        }
+        checkAuth();
+    }, []);
+
+    function handleButtonToLogout(){
+        async function signOut() {
+            const { error } = await (supabase as NonNullable<typeof supabase>).auth.signOut()
+            if (error) {console.log('Error signing out:', error.message)} else console.log('User signed out!')}
+            setSession(false);
+        signOut()          
+    }
+
+    return (
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <div style={{backgroundColor: 'black', color: 'white', padding: '20px', width:'1440px', height:'111px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                <div style={{display: 'flex', alignItems: 'center'}}>
+                    <img src="../kasur.svg" alt="kasur" style={{marginRight: '10px'}}/>
+                    <button>
+                        <img src="../dormihubadmin.svg" alt="dormihubadmin" style={{marginLeft: '10px'}}/>
+                    </button>
+                </div>
+                {
+                    session ? (
+                        <button onClick={handleButtonToLogout}> LOG OUT </button>
+                    ) : (
+                        <button style={{fontSize: '30px', fontFamily: 'Poppins', marginRight: '20px'}}>
+                            <a href="/login">LOGIN</a>
+                        </button>
+                    )
+                }
+            </div>
+            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop: '20px', marginBottom: '20px'}}>
+                <div style={{backgroundColor: 'white', border: '3px solid black', borderRadius: '10px', width:'703px', height:'857px', marginRight: '5px'}}>
+                    <p style={{marginTop: '10px', marginBottom: '10px', textAlign: 'center', fontSize: '30px', fontWeight: '400'}}>New Registration Submission</p>
+                    <div style={{position: 'relative', backgroundColor: '#FDFF8F', width:'622px', height:'130px', marginLeft: 'auto', marginRight: 'auto', marginTop: '10px', marginBottom: '30px', borderRadius: '30px', padding: '20px', boxShadow: '0px 5px 5px rgba(0,0,0,0.3)'}}>
+                        <p style={{fontSize: '18px', fontWeight: '400'}}>STUDENT ID: 18221015</p>
+                        <p style={{fontSize: '18px', fontWeight: '400'}}>Download File:</p>
+                        <button style={{marginTop: '-20px'}}>   
+                            <img src="../file.svg" alt="Download" style={{marginLeft: '150px'}}/>
+                        </button>
+                        <button style={{position: 'absolute', right: '25%', bottom: '30%'}}>   
+                            <img src="../cross.svg" alt="cross" style={{marginLeft: '220px'}}/>
+                        </button>
+                        <button style={{position: 'absolute', right: '5%', bottom: '30%'}}>
+                            <img src="../ceklis.svg" alt="ceklis" style={{marginLeft: '70px'}}/>
+                        </button>
+                    </div>
+                    <div style={{position: 'relative', backgroundColor: '#FDFF8F', width:'622px', height:'130px', marginLeft: 'auto', marginRight: 'auto', marginTop: '10px', marginBottom: '30px', borderRadius: '30px', padding: '20px', boxShadow: '0px 5px 5px rgba(0,0,0,0.3)'}}>
+                        <p style={{fontSize: '18px', fontWeight: '400'}}>STUDENT ID: 18221017</p>
+                        <p style={{fontSize: '18px', fontWeight: '400'}}>Download File:</p>
+                        <button style={{marginTop: '-20px'}}>   
+                            <img src="../file.svg" alt="Download" style={{marginLeft: '150px'}}/>
+                        </button>
+                        <button style={{position: 'absolute', right: '25%', bottom: '30%'}}>   
+                            <img src="../cross.svg" alt="cross" style={{marginLeft: '220px'}}/>
+                        </button>
+                        <button style={{position: 'absolute', right: '5%', bottom: '30%'}}>
+                            <img src="../ceklis.svg" alt="ceklis" style={{marginLeft: '70px'}}/>
+                        </button>
+                    </div>
+                    <div style={{position: 'relative', backgroundColor: '#FDFF8F', width:'622px', height:'130px', marginLeft: 'auto', marginRight: 'auto', marginTop: '10px', marginBottom: '30px', borderRadius: '30px', padding: '20px', boxShadow: '0px 5px 5px rgba(0,0,0,0.3)'}}>
+                        <p style={{fontSize: '18px', fontWeight: '400'}}>STUDENT ID: 18221018</p>
+                        <p style={{fontSize: '18px', fontWeight: '400'}}>Download File:</p>
+                        <button style={{marginTop: '-20px'}}>   
+                            <img src="../file.svg" alt="Download" style={{marginLeft: '150px'}}/>
+                        </button>
+                        <button style={{position: 'absolute', right: '25%', bottom: '30%'}}>   
+                            <img src="../cross.svg" alt="cross" style={{marginLeft: '220px'}}/>
+                        </button>
+                        <button style={{position: 'absolute', right: '5%', bottom: '30%'}}>
+                            <img src="../ceklis.svg" alt="ceklis" style={{marginLeft: '70px'}}/>
+                        </button>
+                    </div>
+                    <div style={{position: 'relative', backgroundColor: '#FDFF8F', width:'622px', height:'130px', marginLeft: 'auto', marginRight: 'auto', marginTop: '10px', marginBottom: '30px', borderRadius: '30px', padding: '20px', boxShadow: '0px 5px 5px rgba(0,0,0,0.3)'}}>
+                        <p style={{fontSize: '18px', fontWeight: '400'}}>STUDENT ID: 18221032</p>
+                        <p style={{fontSize: '18px', fontWeight: '400'}}>Download File:</p>
+                        <button style={{marginTop: '-20px'}}>   
+                            <img src="../file.svg" alt="Download" style={{marginLeft: '150px'}}/>
+                        </button>
+                        <button style={{position: 'absolute', right: '25%', bottom: '30%'}}>   
+                            <img src="../cross.svg" alt="cross" style={{marginLeft: '220px'}}/>
+                        </button>
+                        <button style={{position: 'absolute', right: '5%', bottom: '30%'}}>
+                            <img src="../ceklis.svg" alt="ceklis" style={{marginLeft: '70px'}}/>
+                        </button>
+                    </div>
+                </div>
+                <div style={{backgroundColor: 'white', border: '3px solid black', borderRadius: '10px', width:'703px', height:'857px', marginLeft: '5px'}}>
+                    <p style={{marginTop: '10px', marginBottom: '10px', textAlign: 'center', fontSize: '30px', fontWeight: '400'}}>Check In Request</p>
+                    <div style={{position: 'relative', backgroundColor: '#FDFF8F', width:'622px', height:'130px', marginLeft: 'auto', marginRight: 'auto', marginTop: '10px', marginBottom: '30px', borderRadius: '30px', padding: '20px', boxShadow: '0px 5px 5px rgba(0,0,0,0.3)'}}>
+                        <p style={{fontSize: '18px', fontWeight: '400'}}>STUDENT ID: 18221015</p>
+                        <p style={{fontSize: '18px', fontWeight: '400'}}>Barcode Checker:</p>
+                        <button style={{position: 'absolute', bottom: '10%', right: '60%'}} onClick={() => setIsModalAvailable(true)}>   
+                            <img src="../barcode.svg" alt="Barcode" style={{marginLeft: '150px'}}/>
+                        </button>
+                        <button style={{position: 'absolute', right: '20%', bottom: '30%'}} onClick={() => setIsModalRequest(true)}>   
+                            <img src="../request.svg" alt="Request" style={{marginLeft: '120px'}}/>
+                        </button>
+                        <button style={{position: 'absolute', right: '5%', bottom: '30%'}}>
+                            <img src="../ceklis.svg" alt="ceklis" style={{marginLeft: '70px'}}/>
+                        </button>
+                    </div>
+                    <div style={{position: 'relative', backgroundColor: '#FDFF8F', width:'622px', height:'130px', marginLeft: 'auto', marginRight: 'auto', marginTop: '10px', marginBottom: '30px', borderRadius: '30px', padding: '20px', boxShadow: '0px 5px 5px rgba(0,0,0,0.3)'}}>
+                        <p style={{fontSize: '18px', fontWeight: '400'}}>STUDENT ID: 18221017</p>
+                        <p style={{fontSize: '18px', fontWeight: '400'}}>Barcode Checker:</p>
+                        <button style={{position: 'absolute', bottom: '10%', right: '60%'}} onClick={() => setIsModalNotAvailable(true)}>   
+                            <img src="../barcode.svg" alt="Barcode" style={{marginLeft: '150px'}}/>
+                        </button>
+                        <button style={{position: 'absolute', right: '20%', bottom: '30%'}}>   
+                            <img src="../request.svg" alt="Request" style={{marginLeft: '120px'}}/>
+                        </button>
+                        <button style={{position: 'absolute', right: '5%', bottom: '30%'}}>
+                            <img src="../ceklis.svg" alt="ceklis" style={{marginLeft: '70px'}}/>
+                        </button>
+                    </div>
+                    <div style={{position: 'relative', backgroundColor: '#FDFF8F', width:'622px', height:'130px', marginLeft: 'auto', marginRight: 'auto', marginTop: '10px', marginBottom: '30px', borderRadius: '30px', padding: '20px', boxShadow: '0px 5px 5px rgba(0,0,0,0.3)'}}>
+                        <p style={{fontSize: '18px', fontWeight: '400'}}>STUDENT ID: 18221018</p>
+                        <p style={{fontSize: '18px', fontWeight: '400'}}>Barcode Checker:</p>
+                        <button style={{position: 'absolute', bottom: '10%', right: '60%'}}>   
+                            <img src="../barcode.svg" alt="Barcode" style={{marginLeft: '150px'}}/>
+                        </button>
+                        <button style={{position: 'absolute', right: '20%', bottom: '30%'}}>   
+                            <img src="../request.svg" alt="Request" style={{marginLeft: '120px'}}/>
+                        </button>
+                        <button style={{position: 'absolute', right: '5%', bottom: '30%'}}>
+                            <img src="../ceklis.svg" alt="ceklis" style={{marginLeft: '70px'}}/>
+                        </button>
+                    </div>
+                    <div style={{position: 'relative', backgroundColor: '#FDFF8F', width:'622px', height:'130px', marginLeft: 'auto', marginRight: 'auto', marginTop: '10px', marginBottom: '30px', borderRadius: '30px', padding: '20px', boxShadow: '0px 5px 5px rgba(0,0,0,0.3)'}}>
+                        <p style={{fontSize: '18px', fontWeight: '400'}}>STUDENT ID: 18221032</p>
+                        <p style={{fontSize: '18px', fontWeight: '400'}}>Barcode Checker:</p>
+                        <button style={{position: 'absolute', bottom: '10%', right: '60%'}}>   
+                            <img src="../barcode.svg" alt="Barcode" style={{marginLeft: '150px'}}/>
+                        </button>
+                        <button style={{position: 'absolute', right: '20%', bottom: '30%'}}>   
+                            <img src="../request.svg" alt="Request" style={{marginLeft: '120px'}}/>
+                        </button>
+                        <button style={{position: 'absolute', right: '5%', bottom: '30%'}}>
+                            <img src="../ceklis.svg" alt="ceklis" style={{marginLeft: '70px'}}/>
+                        </button>
+                    </div>
+                    {isModalRequest && (
+                        <div style={{position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', padding: '20px', zIndex: '1000', width: '973px', height: '474px', borderRadius: '30px', border : '3px solid black'}}>
+                            <p style={{fontSize: '36px', textAlign: 'center', fontWeight: '650', marginBottom: '20px'}}>Request Barcode Sent</p>
+                            <hr style={{borderTop: '3px solid black'}} />
+                            <p style={{fontSize: '26px', textAlign: 'justify', padding: '10px'}}>Your barcode request has been successfully submitted. It will be processed by the administrative team for verification and update. Please stay tuned for further updates. If you have any urgent inquiries, don't hesitate to contact our support team. Thank you for your patience.</p>
+                            <button style={{marginLeft: '400px', marginTop: '40px'}} onClick={() => setIsModalRequest(false)}>
+                                <img src="../Ok.svg" alt="Ok"></img>
+                            </button>
+                        </div>
+                    )}
+                    {isAvailable && (
+                        <div style={{position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', padding: '20px', zIndex: '1000', width: '973px', height: '474px', borderRadius: '30px', border : '3px solid black'}}>
+                            <p style={{fontSize: '36px', textAlign: 'center', fontWeight: '650', marginBottom: '20px'}}>Barcode Status: Available</p>
+                            <hr style={{borderTop: '3px solid black'}} />
+                            <p style={{fontSize: '26px', textAlign: 'justify', padding: '10px'}}>The barcodes for dormitory residents are now available. As a dormitory officer, you can proceed to send the barcodes to the residents and inform them that their rooms are ready for check-in. Thank you for your prompt attention to this matter. Should you have any questions or need further assistance, please don't hesitate to reach out. Happy check-ins!</p>
+                            <button style={{marginLeft: '400px', marginTop: '40px'}} onClick={() => setIsModalAvailable(false)}>
+                                <img src="../Ok.svg" alt="Ok"></img>
+                            </button>
+                        </div>
+                    )}
+                    {isNotAvailable && (
+                        <div style={{position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', padding: '20px', zIndex: '1000', width: '973px', height: '474px', borderRadius: '30px', border : '3px solid black'}}>
+                            <p style={{fontSize: '36px', textAlign: 'center', fontWeight: '650', marginBottom: '20px'}}>Barcode Status: Not Available</p>
+                            <hr style={{borderTop: '3px solid black'}} />
+                            <p style={{fontSize: '26px', textAlign: 'justify', padding: '10px'}}>Barcode not available yet. Please press the 'Request Barcode' button for reprocessing. We apologize for any inconvenience. If you encounter any issues or have questions, feel free to contact our support team. Thank you for your understanding.</p>
+                            <button style={{marginLeft: '400px', marginTop: '40px'}} onClick={() => setIsModalNotAvailable(false)}>
+                                <img src="../Ok.svg" alt="Ok"></img>
+                            </button>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default Dashboard;
