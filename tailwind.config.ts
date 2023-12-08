@@ -10,6 +10,9 @@ const config: Config = {
     extend: {
       backgroundImage: {
       },
+      fontFamily:{
+        poppins : ['Poppins', 'sans-serif']
+      },
     },
   },
   plugins: [],

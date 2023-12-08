@@ -3,60 +3,51 @@ import Image from 'next/image';
 
 const Navbar = () => {
   return (
-    <nav className="bg-black p-4 font-poppins flex text-white text-sm">
-        <div className='flex'>
-            <div className='flex items-center justify-center mr-1'>
-                <Image src="/images/logo-dormihub.svg" width={20} height={20} alt="Logo DormiHub"/>
-            </div>
-            <div>
-                DormiHub
-            </div>
+    <nav className="bg-black p-4 font-poppins flex items-center justify-between text-white text-base">
+      <Link href="/">
+      <div className='flex items-center space-x-2 hover:text-gray-300 mr-2'>
+        <div className='flex items-center justify-center'>
+          <Image src="/images/logo-dormihub.svg" width={30} height={20} alt="Logo DormiHub"/>
         </div>
-        <div className='ml-3'>
-            Home
+        <div>
+          DormiHub
         </div>
-        <div className='ml-3'>
-            Book Now
+      </div>
+      </Link>
+      <div className='flex'>
+
+      <div className='ml-4 mr-4'>
+        <div className="hover:text-gray-300 cursor-pointer">
+          <Link href="/">
+            <div>Home</div>
+          </Link>
         </div>
-        <div className='ml-3'>
-            Photos
+      </div>
+
+      <div className='ml-4 mr-4'>
+        <div className="hover:text-gray-300 cursor-pointer">
+          <Link href="/book">
+            <div>Book Now</div>
+          </Link>
         </div>
-        <Link href="/login">
-            <div className='ml-3'>
-                Login
-            </div>
-        </Link>
-      {/* <ul className="flex space-x-4 text-white">
-        <li className='flex'>
-            <div className='mr-1'>
-                <Image src="/images/logo-dormihub.svg" alt="logo dormihub" width={70} height={20}/>
-            </div>
-            <div>
-                DormiHub
-            </div>
-            
-        </li>
-        <li>
-          <Link href="/">
-            <p className="hover:text-gray-300">Home</p>
+      </div>
+
+      <div className='ml-4 mr-4'>
+        <div className="hover:text-gray-300 cursor-pointer">
+          <Link href="/photos">
+            <div>Photos</div>
           </Link>
-        </li>
-        <li>
-          <Link href="/">
-            <p className="hover:text-gray-300">Book Now</p>
+        </div>
+      </div>
+
+      <div className='ml-4 mr-4'>
+        <div className="hover:text-gray-300 cursor-pointer">
+          <Link href="/login">
+            <div>Login</div>
           </Link>
-        </li>
-        <li>
-          <Link href="/">
-            <p className="hover:text-gray-300">Photos</p>
-          </Link>
-        </li>
-        <li>
-          <Link href="/">
-            <p className="hover:text-gray-300">Login</p>
-          </Link>
-        </li>
-      </ul> */}
+        </div>
+      </div>
+      </div>
     </nav>
   );
 };
