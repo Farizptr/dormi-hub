@@ -32,17 +32,19 @@ export default function Registration() {
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFormData((prevData) => ({
-        ...prevData,
-        student_card: e.target.files[0].name
-      }))
+    let fileName = ''
+    if (e && e.target && e.target.files && e.target.files[0]) {
+      fileName = e.target.files[0].name
     }
+    setFormData((prevData) => ({
+      ...prevData,
+      student_card: fileName
+    }))
   }
 
   const handleRegistration = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/api/book/', formData);
+      const response = await axios.post('/api/book/', formData);
 
       if (response.status === 200) {
         showToast(0, 'Registrasi berhasil')

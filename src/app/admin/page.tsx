@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import withRoles from '@/components/withRoles'; 
+// import withRoles from '@/components/withRoles'; 
 import Navbar from '@/components/Navbar';
 import axios from 'axios';
 
@@ -22,7 +22,7 @@ function Admin() {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/book/')
+                const response = await axios.get('/api/book/')
                 if (response.status === 200) {
                     setBooks(response.data)
                 }
@@ -35,7 +35,7 @@ function Admin() {
     const handleDelete =  (id: string) => {
         const deleteBook = async (id: string) => {
             try {
-                const response = await axios.delete(`http://localhost:3000/api/book/${id}`)
+                const response = await axios.delete(`/api/book/${id}`)
                 if (response.status === 200) {
                 }
 
@@ -122,4 +122,4 @@ function Admin() {
    );
 }
 
-export default withRoles(Admin, [2])
+export default Admin
